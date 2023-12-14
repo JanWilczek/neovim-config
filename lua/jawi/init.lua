@@ -539,6 +539,7 @@ local servers = {
       -- diagnostics = { disable = { 'missing-fields' } },
     },
   },
+  kotlin_language_server = { '.kt' },
 }
 
 -- Setup neovim lua configuration
