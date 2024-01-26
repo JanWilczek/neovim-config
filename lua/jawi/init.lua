@@ -150,12 +150,7 @@ require('lazy').setup({
   },
 
   {
-    -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'onedark'
-    end,
+    'Mofiqul/vscode.nvim',
   },
 
   {
@@ -165,7 +160,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'onedark',
+        theme = 'vscode',
         component_separators = '|',
         section_separators = '',
       },
@@ -296,6 +291,15 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
+
+-- [[ Configure theme ]]
+require('vscode').setup({
+    style = 'dark',
+    transparent = false,
+    italic_comments = true,
+    disable_nvimtree_bg = true,
+})
+require('vscode').load()
 
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
