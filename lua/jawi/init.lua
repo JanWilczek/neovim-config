@@ -271,6 +271,12 @@ vim.o.termguicolors = true
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
+-- Copy to and paste from system clipboard more easily
+vim.keymap.set({'n', 'v'}, '<leader>y', '"*y')
+vim.kepmap.set({'n', 'v'}, '<leader>p', '"*p')
+vim.keymap.set({'n', 'v'}, '<leader>y', '"+y')
+vim.kepmap.set({'n', 'v'}, '<leader>p', '"+p')
+
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
