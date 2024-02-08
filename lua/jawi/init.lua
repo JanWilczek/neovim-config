@@ -317,6 +317,8 @@ require('telescope').setup {
         ['<C-d>'] = false,
       },
     },
+    file_ignore_patterns = {".git/", ".cache", "%.o", "%.a", "%.out", "%.class",
+      "%.pdf", "%.mkv", "%.mp4", "%.zip", "venv/", "venv2/"},
   },
 }
 
