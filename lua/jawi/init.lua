@@ -1,10 +1,6 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = '-'
 
-vim.wo.number = true
-vim.wo.relativenumber = true
-
-
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
@@ -228,8 +224,10 @@ require('lazy').setup({
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
 
+vim.wo.relativenumber = true
+
 -- Set highlight on search
-vim.o.hlsearch = false
+vim.o.hlsearch = true
 
 -- Make line numbers default
 vim.wo.number = true
