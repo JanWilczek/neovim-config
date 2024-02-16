@@ -225,6 +225,10 @@ require('lazy').setup({
 -- NOTE: You can change these options as you wish!
 
 vim.wo.relativenumber = true
+vim.o.expandtab = true
+vim.o.smartindent = true
+vim.o.tabstop = 2
+vim.o.shiftwidth = 2
 
 -- Set highlight on search
 vim.o.hlsearch = true
@@ -315,7 +319,7 @@ require('telescope').setup {
         ['<C-d>'] = false,
       },
     },
-    file_ignore_patterns = {".git/", ".cache", "%.o", "%.a", "%.out", "%.class",
+    file_ignore_patterns = {".git/*", ".cache", "%.o", "%.a", "%.out", "%.class",
       "%.pdf", "%.mkv", "%.mp4", "%.zip", "venv/", "venv2/"},
   },
 }
