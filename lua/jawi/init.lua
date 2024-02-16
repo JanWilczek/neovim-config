@@ -231,7 +231,7 @@ vim.o.tabstop = 2
 vim.o.shiftwidth = 2
 
 -- Set listchars: Display tabs and trailing spaces visually
-vim.opt.listchars = {tab = '▸\\ ', trail = '·', space = '·'}
+vim.opt.listchars = {tab = '→ ', trail = '·', space = '·'}
 vim.opt.list = true
 
 -- Set highlight on search
