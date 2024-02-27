@@ -22,7 +22,7 @@ return {
 	  filtered_items = {
 	    visible = false,
 	    hide_dotfiles = false,
-	    hide_gitignored = true,
+	    hide_gitignored = false,
 	  }
 	}
       })
