@@ -323,8 +323,8 @@ require('telescope').setup {
         ['<C-d>'] = false,
       },
     },
-    file_ignore_patterns = {".git/*", ".cache", "%.o", "%.a", "%.out", "%.class",
-      "%.pdf", "%.mkv", "%.mp4", "%.zip", "venv/", "venv2/"},
+    file_ignore_patterns = {".git/*", ".cache/*", "%.o", "%.a", "%.out", "%.class",
+      "%.pdf", "%.mkv", "%.mp4", "%.zip", "venv/*", "venv2/*", "vcpkg/*", "build/*", "vcpkg_installed/*", "target/*"},
   },
 }
 
