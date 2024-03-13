@@ -1,5 +1,5 @@
 return {
-	{
+        {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
     dependencies = {
@@ -30,21 +30,22 @@ return {
     },
     config = function ()
       require("neo-tree").setup({
-	close_if_last_window = true,
-	default_component_configs = {
-	  window = {
-	    filesystem = {
-	      hijack_netrw_behavior = "open_current",
-	    },
-	  },
-	},
-	filesystem = {
-	  filtered_items = {
-	    visible = false,
-	    hide_dotfiles = false,
-	    hide_gitignored = false,
-	  }
-	}
+        close_if_last_window = true,
+        auto_clean_after_session_restore = true,
+        default_component_configs = {
+          window = {
+            filesystem = {
+              hijack_netrw_behavior = "open_current",
+            },
+          },
+        },
+        filesystem = {
+          filtered_items = {
+            visible = false,
+            hide_dotfiles = false,
+            hide_gitignored = false,
+          }
+        }
       })
     end
 }
