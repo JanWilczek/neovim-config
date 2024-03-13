@@ -47,7 +47,10 @@ return {
           }
         }
       })
-    end
+    end,
+    keys = {
+      { "/", "<cmd>Neotree toggle left reveal_force_cwd<cr>", desc = "Neotree toggle file hierarchy"},
+    }
 }
 }
 
