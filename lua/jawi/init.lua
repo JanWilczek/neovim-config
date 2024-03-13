@@ -155,7 +155,7 @@ require('lazy').setup({
     -- See `:help lualine.txt`
     opts = {
       options = {
-        icons_enabled = false,
+        icons_enabled = true,
         theme = 'vscode',
         component_separators = '|',
         section_separators = '',
@@ -551,6 +551,7 @@ local servers = {
   rust_analyzer = {},
   tsserver = {},
   html = { filetypes = { 'html', 'twig', 'hbs'} },
+  cmake = require("jawi.lsp.config.cmake"),
 
   lua_ls = {
     Lua = {
