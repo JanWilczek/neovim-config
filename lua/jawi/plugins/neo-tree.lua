@@ -32,7 +32,7 @@ return {
     config = function ()
       require("neo-tree").setup({
         close_if_last_window = true,
-        -- auto_clean_after_session_restore = false,
+        auto_clean_after_session_restore = false,
         default_component_configs = {
           window = {
             filesystem = {
