@@ -159,8 +159,10 @@ require('lazy').setup({
         icons_enabled = true,
         theme = 'vscode',
         component_separators = '|',
-        section_separators = '',
       },
+      sections = {
+        lualine_b = {'diff', 'diagnostics'},
+      }
     },
   },
 
