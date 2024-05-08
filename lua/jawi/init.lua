@@ -287,6 +287,16 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set({'n', 'v'}, '<leader>y', '"+y', { desc = "Copy to system clipboard" })
 vim.keymap.set({'n', 'v'}, '<leader>p', '"+p', { desc = "Paste from system clipboard" })
 
+-- Copy currently edited filename to system clipboard
+
+-- Function to copy the current file name to the clipboard
+local function copy_filename_to_clipboard()
+  local filename = vim.fn.expand('%:t')  -- Gets the name of the current file
+  vim.fn.setreg('+', filename)           -- Copies it to the clipboard
+end
+
+vim.keymap.set({'n', 'v'}, '<leader>cn', copy_filename_to_clipboard, { noremap = true, silent = true, desc = "[C]opy file[N]ame to system clipboard" })
+
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
