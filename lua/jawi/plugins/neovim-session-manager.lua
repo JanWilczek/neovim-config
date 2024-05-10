@@ -7,7 +7,8 @@ return {
   },
   config = function()
     require 'session_manager'.setup({
-
+      autoload_mode = require('session_manager.config').AutoloadMode.Disabled, -- other don't work as expected
+      autosave_last_session = false, -- enable quick opening and closing without messing up the saved session
     })
   end
 }
