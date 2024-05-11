@@ -127,7 +127,7 @@ require('lazy').setup({
         map('n', '<leader>hS', gs.stage_buffer, { desc = 'git Stage buffer' })
         map('n', '<leader>hu', gs.undo_stage_hunk, { desc = 'undo stage hunk' })
         map('n', '<leader>hR', gs.reset_buffer, { desc = 'git Reset buffer' })
-        map('n', '<leader>hp', gs.preview_hunk, { desc = 'preview git hunk' })
+        map('n', '<leader>hP', gs.preview_hunk, { desc = 'preview git hunk' })
         map('n', '<leader>hb', function()
           gs.blame_line { full = false }
         end, { desc = 'git blame line' })
@@ -295,7 +295,21 @@ local function copy_filename_to_clipboard()
   vim.fn.setreg('+', filename)           -- Copies it to the clipboard
 end
 
-vim.keymap.set({'n', 'v'}, '<leader>cn', copy_filename_to_clipboard, { noremap = true, silent = true, desc = "[C]opy file[N]ame to system clipboard" })
+vim.keymap.set({'n', 'v'}, '<leader>cf', copy_filename_to_clipboard, { noremap = true, silent = true, desc = "[C]opy [F]ilename to system clipboard" })
+
+-- Lua function to copy the current file name without its extension to the clipboard
+local function copy_filename_to_clipboard_no_ext()
+    -- Get the full path of the current file
+    local full_path = vim.fn.expand("%:p")
+    -- Extract the filename without the extension
+    local filename_no_ext = vim.fn.fnamemodify(full_path, ":t:r")
+    -- Copy the filename to the system clipboard
+    vim.fn.setreg('+', filename_no_ext)
+    -- Optionally, you can display a message confirming the action
+    vim.notify("Copied filename to clipboard: " .. filename_no_ext, vim.log.levels.INFO)
+end
+
+vim.keymap.set({'n', 'v'}, '<leader>cn', copy_filename_to_clipboard_no_ext, { noremap = true, silent = true, desc = "[C]opy file[N]ame (without extension) to system clipboard" })
 
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
