@@ -311,6 +311,16 @@ end
 
 vim.keymap.set({'n', 'v'}, '<leader>cn', copy_filename_to_clipboard_no_ext, { noremap = true, silent = true, desc = "[C]opy file[N]ame (without extension) to system clipboard" })
 
+-- Function to format current file with clang-tidy
+local function format_cpp_file()
+  local path = vim.fn.expand("%:p")
+  local command = "!clang-format -i " .. path
+  vim.fn.execute(command, "")
+  vim.notify("Formatted file: " .. path, vim.log.levels.INFO)
+end
+
+vim.keymap.set({'n'}, '<leader>ff', format_cpp_file, { noremap = true, silent = false, desc = "[F]ormat current C++ [F]ile"})
+
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
