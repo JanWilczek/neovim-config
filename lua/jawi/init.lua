@@ -66,6 +66,12 @@ require('lazy').setup({
 
       -- Adds a number of user-friendly snippets
       'rafamadriz/friendly-snippets',
+
+      -- Source for buffer words
+      'hrsh7th/cmp-buffer',
+
+      -- Source for filesystem paths
+      'hrsh7th/cmp-path',
     },
   },
 
@@ -157,7 +163,6 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = true,
-        theme = 'vscode',
         component_separators = '|',
       },
       sections = {
@@ -354,6 +359,11 @@ require('vscode').setup({
     disable_nvimtree_bg = true,
 })
 require('vscode').load()
+require('lualine').setup({
+    options = {
+        theme = 'vscode',
+    },
+})
 
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
@@ -676,6 +686,8 @@ cmp.setup {
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
+    { name = 'buffer' },
+    { name = 'path' },
   },
 }
 
