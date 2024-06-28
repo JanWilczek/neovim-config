@@ -51,6 +51,7 @@ return {
     end,
     keys = {
       { "|", "<cmd>Neotree toggle left reveal_force_cwd<cr>", desc = "Neotree toggle file hierarchy"},
+      { "\\", "<cmd>Neotree reveal<cr>", desc = "Neotree reveal current file in hierarchy"},
     }
 }
 }
