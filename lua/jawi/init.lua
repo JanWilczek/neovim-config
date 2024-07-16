@@ -318,7 +318,7 @@ vim.keymap.set({'n', 'v'}, '<leader>cn', copy_filename_to_clipboard_no_ext, { no
 
 -- Function to format current file with clang-tidy
 local function format_cpp_file()
-  local path = vim.fn.expand("%:p")
+  local path = vim.fn.fnameescape(vim.fn.expand("%:."))
   local command = "!clang-format -i " .. path
   vim.fn.execute(command, "")
   vim.notify("Formatted file: " .. path, vim.log.levels.INFO)
