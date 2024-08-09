@@ -340,6 +340,13 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 vim.keymap.set('n', '<leader>tn', vim.cmd.tabnext, { desc = '[T]ab [N]ext'})
 vim.keymap.set('n', '<leader>tp', vim.cmd.tabprevious, { desc = '[T]ab [P]revious'})
 
+-- Copy relative path to current file
+vim.api.nvim_create_user_command("CopyRelPath", function()
+    local path = vim.fn.expand("%")
+    vim.fn.setreg("+", path)
+    vim.notify('Copied "' .. path .. '" to the clipboard!')
+end, {})
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
