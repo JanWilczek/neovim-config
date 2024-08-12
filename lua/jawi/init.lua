@@ -316,7 +316,8 @@ end
 
 vim.keymap.set({'n', 'v'}, '<leader>cn', copy_filename_to_clipboard_no_ext, { noremap = true, silent = true, desc = "[C]opy file[N]ame (without extension) to system clipboard" })
 
--- Function to format current file with clang-tidy
+require("jawi.cpp")
+-- Function to format current file with clang-format
 local function format_cpp_file()
   local path = vim.fn.fnameescape(vim.fn.expand("%:."))
   local command = "!clang-format -i " .. path
