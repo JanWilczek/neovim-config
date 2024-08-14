@@ -1,19 +1,20 @@
 -- Add this to your Neovim config (init.lua or a separate lua file)
 function CreateCppAndSplitOpen()
     -- Get the current file path
-    local hpp_file = vim.api.nvim_buf_get_name(0)
+    local header_file = vim.api.nvim_buf_get_name(0)
 
-    -- Ensure it is an .hpp file
-    if hpp_file:sub(-4) ~= ".hpp" then
-        print("This is not an .hpp file!")
+    -- Extract the file name (e.g., Foo.hpp or Foo.h)
+    local header_filename = header_file:match("([^/]+%.hp*)$")
+
+    -- Ensure it is an .hpp or .h file
+    if header_filename == nil then
+        print("This is not a .hpp or .h file!")
         return
     end
 
     -- Generate the .cpp file path
-    local cpp_file = hpp_file:gsub("%.hpp$", ".cpp")
-
-    -- Extract the file name (e.g., Foo.hpp)
-    local hpp_filename = hpp_file:match("([^/]+)%.hpp") .. ".hpp"
+    local extension = header_file:match("(%.hp*)$")
+    local cpp_file = header_file:gsub(extension, ".cpp")
 
     -- Check if the .cpp file already exists
     local cpp_exists = vim.fn.filereadable(cpp_file) == 1
@@ -28,7 +29,7 @@ function CreateCppAndSplitOpen()
           return
         end
 
-        file:write("#include \"" .. hpp_filename .. "\"\n")
+        file:write("#include \"" .. header_filename .. "\"\n\n")
         file:close()
         print("Created " .. cpp_file)
     else
@@ -36,7 +37,7 @@ function CreateCppAndSplitOpen()
     end
 
     -- Open the .cpp file in a vertical split
-    vim.cmd("vsplit " .. cpp_file)
+    vim.cmd("split " .. cpp_file)
 end
 
 -- Map this function to a command or keybinding if you want
