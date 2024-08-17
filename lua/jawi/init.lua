@@ -326,7 +326,7 @@ local function format_cpp_file()
   vim.notify("Formatted file: " .. path, vim.log.levels.INFO)
 end
 
-vim.keymap.set({'n'}, '<leader>ff', format_cpp_file, { noremap = true, silent = false, desc = "[F]ormat current C++ [F]ile"})
+vim.keymap.set({'n'}, '<A-F>', format_cpp_file, { noremap = true, silent = false, desc = "[F]ormat current C++ [F]ile"})
 
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
