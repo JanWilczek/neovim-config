@@ -375,7 +375,7 @@ require('lualine').setup({
 })
 
 -- Set the background color of the cursorline
-vim.api.nvim_set_hl(0, "CursorLine", { bg = "#363634" })
+vim.api.nvim_set_hl(0, "CursorLine", { bg = "#292928" })
 
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
