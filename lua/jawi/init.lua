@@ -322,7 +322,7 @@ require("jawi.cpp")
 local function format_cpp_file()
   local path = vim.fn.fnameescape(vim.fn.expand("%:."))
   local command = "!clang-format -i " .. path
-  vim.fn.execute(command, "")
+  vim.fn.execute(command, "silent!")
   vim.notify("Formatted file: " .. path, vim.log.levels.INFO)
 end
 
