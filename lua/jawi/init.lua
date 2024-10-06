@@ -283,6 +283,10 @@ vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
+-- Automatically reload file if it has been modified outside the editor.
+-- This is useful because I run a lot of formatting git hooks.
+vim.opt.autoread = true
+
 -- [[ Basic Keymaps ]]
 
 -- Keymaps for better default experience
