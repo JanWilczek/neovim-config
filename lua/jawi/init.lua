@@ -286,6 +286,22 @@ vim.o.termguicolors = true
 -- Automatically reload file if it has been modified outside the editor.
 -- This is useful because I run a lot of formatting git hooks.
 vim.opt.autoread = true
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
+  pattern = "*",
+  callback = function()
+    if vim.fn.mode() ~= 'c' then
+      vim.cmd("checktime")
+    end
+  end,
+})
+
+-- Notification after file change
+vim.api.nvim_create_autocmd("FileChangedShellPost", {
+  pattern = "*",
+  callback = function()
+    vim.api.nvim_echo({{"File changed on disk. Buffer reloaded.", "WarningMsg"}}, false, {})
+  end,
+})
 
 -- [[ Basic Keymaps ]]
 
