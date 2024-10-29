@@ -369,6 +369,12 @@ vim.api.nvim_create_user_command("CopyRelPath", function()
     vim.notify('Copied "' .. path .. '" to the clipboard!')
 end, {})
 
+-- import floating_window
+local fw = require('jawi.floating_window')
+vim.keymap.set('n', '<leader>wm', function ()
+  fw.open_floating_window('~/workingmemory.txt')
+end, { desc = 'Open [W]orking [M]emory file' })
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
