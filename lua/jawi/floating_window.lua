@@ -3,7 +3,7 @@ local floating_window = {}
 
 function floating_window.open_floating_window(filename)
   -- Set the window dimensions to proportion of the editor's width and height
-  local width = math.floor(vim.o.columns * 0.3)
+  local width = math.floor(vim.o.columns * 0.5)
   local height = math.floor(vim.o.lines * 0.5)
 
   -- Calculate the center position
