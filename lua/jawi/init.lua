@@ -372,7 +372,7 @@ end, {})
 -- import floating_window
 local fw = require('jawi.floating_window')
 vim.keymap.set('n', '<leader>wm', function ()
-  fw.open_floating_window('~/workingmemory.txt')
+  fw.open_floating_window('~/workingmemory.md')
 end, { desc = 'Open [W]orking [M]emory file' })
 
 -- [[ Highlight on yank ]]
