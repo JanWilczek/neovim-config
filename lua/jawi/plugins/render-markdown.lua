@@ -6,6 +6,7 @@ return {
   ---@module 'render-markdown'
   ---@type render.md.UserConfig
   opts = {
+    render_modes = true,
     checkbox = {
       checked = { scope_highlight = '@markup.strikethrough' },
     },
