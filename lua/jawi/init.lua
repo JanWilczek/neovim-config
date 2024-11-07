@@ -647,7 +647,7 @@ local servers = {
   -- gopls = {},
   pyright = {},
   rust_analyzer = {},
-  tsserver = {},
+  eslint = {},
   html = { filetypes = { 'html', 'twig', 'hbs'} },
   cmake = require("jawi.lsp.config.cmake"),
 
