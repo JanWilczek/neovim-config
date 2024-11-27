@@ -144,7 +144,6 @@ require('lazy').setup({
 
         -- Toggles
         map('n', '<leader>tb', gs.toggle_current_line_blame, { desc = 'toggle git blame line' })
-        map('n', '<leader>td', gs.toggle_deleted, { desc = 'toggle git show deleted' })
 
         -- Text object
         map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>', { desc = 'select git hunk' })
@@ -374,6 +373,9 @@ local fw = require('jawi.floating_window')
 vim.keymap.set('n', '<leader>wm', function ()
   fw.open_floating_window('~/workingmemory.md')
 end, { desc = 'Open [W]orking [M]emory file' })
+vim.keymap.set('n', '<leader>td', function ()
+  fw.open_floating_window(vim.fn.getcwd() .. '/todo.md')
+end, { desc = 'Open local [T]odo [D]o file' })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
