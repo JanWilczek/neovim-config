@@ -43,3 +43,13 @@ end
 -- Map this function to a command or keybinding if you want
 vim.api.nvim_set_keymap('n', '<leader>cx', ':lua CreateCppAndSplitOpen()<CR>',
   { noremap = true, silent = true, desc = 'Create .cpp file in the same directory as current header file' })
+
+-- Specific spaces per tab in C++ files
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "cpp",
+  callback = function()
+    vim.opt_local.tabstop = 4
+    vim.opt_local.softtabstop = 4
+    vim.opt_local.shiftwidth = 4
+  end
+})
