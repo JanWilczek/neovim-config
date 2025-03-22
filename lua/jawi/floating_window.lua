@@ -27,4 +27,34 @@ function floating_window.open_floating_window(filename)
   vim.api.nvim_command('edit ' .. filename)          -- Open the specified file in the buffer
 end
 
+function floating_window.create_todo_file(file_path)
+  -- File doesn't exist, create it with the header
+  local f = io.open(file_path, "w")
+  if f then
+    -- Write the fancy header to the file
+    f:write([[
+╔═════════════════════════════════════════╗
+║    ✅ / 🧠  LOCAL TODO FILE 🧠 / ✅     ║
+╚═════════════════════════════════════════╝
+
+]])
+    f:close()
+  else
+    print("Failed to create todo file!")
+  end
+end
+
+function floating_window.file_exists(name)
+   local f=io.open(name,"r")
+   if f~=nil then io.close(f) return true else return false end
+end
+
+function floating_window.open_todo_file(file_path)
+  if not floating_window.file_exists(file_path) then
+    floating_window.create_todo_file(file_path)
+  end
+
+  floating_window.open_floating_window(file_path)
+end
+
 return floating_window

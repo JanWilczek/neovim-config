@@ -374,7 +374,7 @@ vim.keymap.set('n', '<leader>wm', function ()
   fw.open_floating_window('~/workingmemory.md')
 end, { desc = 'Open [W]orking [M]emory file' })
 vim.keymap.set('n', '<leader>td', function ()
-  fw.open_floating_window(vim.fn.getcwd() .. '/todo.md')
+  fw.open_todo_file(vim.fn.getcwd() .. '/todo.md')
 end, { desc = 'Open local [T]odo [D]o file' })
 
 -- [[ Highlight on yank ]]
