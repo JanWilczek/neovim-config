@@ -407,7 +407,9 @@ vim.api.nvim_set_hl(0, "CursorLine", { bg = "#303030" })
 
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
-require('telescope').setup {
+local telescope = require("telescope")
+
+telescope.setup({
   defaults = {
     mappings = {
       i = {
@@ -415,13 +417,21 @@ require('telescope').setup {
         ['<C-d>'] = false,
       },
     },
-    file_ignore_patterns = {".git/*", ".cache/*", "%.o", "%.a", "%.out", "%.class",
-      "%.pdf", "%.mkv", "%.mp4", "%.zip", "venv/*", "venv2/*", "vcpkg/*", "build/*", "vcpkg_installed/*", "target/*"},
+    file_ignore_patterns = { ".git/*", ".cache/*", "%.o", "%.a", "%.out", "%.class",
+      "%.pdf", "%.mkv", "%.mp4", "%.zip", "venv/*", "venv2/*", "vcpkg/*", "build/*", "vcpkg_installed/*", "target/*" },
   },
-}
+  pickers = {
+    find_files = {
+      -- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
+      find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+      hidden = true,
+      no_ignore = true,
+    },
+  },
+})
 
 -- Enable telescope fzf native, if installed
-pcall(require('telescope').load_extension, 'fzf')
+pcall(telescope.load_extension, 'fzf')
 
 -- Telescope live_grep in git root
 -- Function to find the git root directory based on the current buffer's path
