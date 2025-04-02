@@ -76,7 +76,7 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
+  { 'folke/which-key.nvim',  opts = {} },
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -165,7 +165,7 @@ require('lazy').setup({
         component_separators = '|',
       },
       sections = {
-        lualine_b = {'diff', 'diagnostics'},
+        lualine_b = { 'diff', 'diagnostics' },
       }
     },
   },
@@ -239,7 +239,7 @@ vim.o.shiftwidth = 2
 vim.o.cursorline = true
 
 -- Set listchars: Display tabs and trailing spaces visually
-vim.opt.listchars = {tab = '→ ', trail = '·', space = '·'}
+vim.opt.listchars = { tab = '→ ', trail = '·', space = '·' }
 vim.opt.list = true
 
 -- Set highlight on search
@@ -298,7 +298,7 @@ vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHo
 vim.api.nvim_create_autocmd("FileChangedShellPost", {
   pattern = "*",
   callback = function()
-    vim.api.nvim_echo({{"File changed on disk. Buffer reloaded.", "WarningMsg"}}, false, {})
+    vim.api.nvim_echo({ { "File changed on disk. Buffer reloaded.", "WarningMsg" } }, false, {})
   end,
 })
 
@@ -309,32 +309,34 @@ vim.api.nvim_create_autocmd("FileChangedShellPost", {
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- Copy to and paste from system clipboard more easily
-vim.keymap.set({'n', 'v'}, '<leader>y', '"+y', { desc = "Copy to system clipboard" })
-vim.keymap.set({'n', 'v'}, '<leader>p', '"+p', { desc = "Paste from system clipboard" })
+vim.keymap.set({ 'n', 'v' }, '<leader>y', '"+y', { desc = "Copy to system clipboard" })
+vim.keymap.set({ 'n', 'v' }, '<leader>p', '"+p', { desc = "Paste from system clipboard" })
 
 -- Copy currently edited filename to system clipboard
 
 -- Function to copy the current file name to the clipboard
 local function copy_filename_to_clipboard()
-  local filename = vim.fn.expand('%:t')  -- Gets the name of the current file
-  vim.fn.setreg('+', filename)           -- Copies it to the clipboard
+  local filename = vim.fn.expand('%:t') -- Gets the name of the current file
+  vim.fn.setreg('+', filename)          -- Copies it to the clipboard
 end
 
-vim.keymap.set({'n', 'v'}, '<leader>cf', copy_filename_to_clipboard, { noremap = true, silent = true, desc = "[C]opy [F]ilename to system clipboard" })
+vim.keymap.set({ 'n', 'v' }, '<leader>cf', copy_filename_to_clipboard,
+  { noremap = true, silent = true, desc = "[C]opy [F]ilename to system clipboard" })
 
 -- Lua function to copy the current file name without its extension to the clipboard
 local function copy_filename_to_clipboard_no_ext()
-    -- Get the full path of the current file
-    local full_path = vim.fn.expand("%:p")
-    -- Extract the filename without the extension
-    local filename_no_ext = vim.fn.fnamemodify(full_path, ":t:r")
-    -- Copy the filename to the system clipboard
-    vim.fn.setreg('+', filename_no_ext)
-    -- Optionally, you can display a message confirming the action
-    vim.notify("Copied filename to clipboard: " .. filename_no_ext, vim.log.levels.INFO)
+  -- Get the full path of the current file
+  local full_path = vim.fn.expand("%:p")
+  -- Extract the filename without the extension
+  local filename_no_ext = vim.fn.fnamemodify(full_path, ":t:r")
+  -- Copy the filename to the system clipboard
+  vim.fn.setreg('+', filename_no_ext)
+  -- Optionally, you can display a message confirming the action
+  vim.notify("Copied filename to clipboard: " .. filename_no_ext, vim.log.levels.INFO)
 end
 
-vim.keymap.set({'n', 'v'}, '<leader>cn', copy_filename_to_clipboard_no_ext, { noremap = true, silent = true, desc = "[C]opy file[N]ame (without extension) to system clipboard" })
+vim.keymap.set({ 'n', 'v' }, '<leader>cn', copy_filename_to_clipboard_no_ext,
+  { noremap = true, silent = true, desc = "[C]opy file[N]ame (without extension) to system clipboard" })
 
 require("jawi.cpp")
 -- Function to format current file with clang-format
@@ -345,7 +347,7 @@ local function format_cpp_file()
   vim.notify("Formatted file: " .. path, vim.log.levels.INFO)
 end
 
-vim.keymap.set({'n'}, '<A-F>', format_cpp_file, { noremap = true, silent = false, desc = "[F]ormat current C++ [F]ile"})
+vim.keymap.set({ 'n' }, '<A-F>', format_cpp_file, { noremap = true, silent = false, desc = "[F]ormat current C++ [F]ile" })
 
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -358,22 +360,22 @@ vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open float
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
 -- Tab navigation
-vim.keymap.set('n', '<leader>tn', vim.cmd.tabnext, { desc = '[T]ab [N]ext'})
-vim.keymap.set('n', '<leader>tp', vim.cmd.tabprevious, { desc = '[T]ab [P]revious'})
+vim.keymap.set('n', '<leader>tn', vim.cmd.tabnext, { desc = '[T]ab [N]ext' })
+vim.keymap.set('n', '<leader>tp', vim.cmd.tabprevious, { desc = '[T]ab [P]revious' })
 
 -- Copy relative path to current file
 vim.api.nvim_create_user_command("CopyRelPath", function()
-    local path = vim.fn.expand("%")
-    vim.fn.setreg("+", path)
-    vim.notify('Copied "' .. path .. '" to the clipboard!')
+  local path = vim.fn.expand("%")
+  vim.fn.setreg("+", path)
+  vim.notify('Copied "' .. path .. '" to the clipboard!')
 end, {})
 
 -- import floating_window
 local fw = require('jawi.floating_window')
-vim.keymap.set('n', '<leader>wm', function ()
+vim.keymap.set('n', '<leader>wm', function()
   fw.open_floating_window('~/workingmemory.md')
 end, { desc = 'Open [W]orking [M]emory file' })
-vim.keymap.set('n', '<leader>td', function ()
+vim.keymap.set('n', '<leader>td', function()
   fw.open_todo_file(vim.fn.getcwd() .. '/todo.md')
 end, { desc = 'Open local [T]odo [D]o file' })
 
@@ -390,16 +392,16 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- [[ Configure theme ]]
 require('vscode').setup({
-    style = 'dark',
-    transparent = false,
-    italic_comments = true,
-    disable_nvimtree_bg = true,
+  style = 'dark',
+  transparent = false,
+  italic_comments = true,
+  disable_nvimtree_bg = true,
 })
 require('vscode').load()
 require('lualine').setup({
-    options = {
-        theme = 'vscode',
-    },
+  options = {
+    theme = 'vscode',
+  },
 })
 
 -- Set the background color of the cursorline
@@ -486,6 +488,7 @@ local function telescope_live_grep_open_files()
     prompt_title = 'Live Grep in Open Files',
   }
 end
+
 vim.keymap.set('n', '<leader>s/', telescope_live_grep_open_files, { desc = '[S]earch [/] in Open Files' })
 vim.keymap.set('n', '<leader>st', require('telescope.builtin').builtin, { desc = '[S]earch Select [T]elescope' })
 vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
@@ -614,21 +617,21 @@ end
 
 -- document existing key chains
 require('which-key').add({
-  { "<leader>c", group = "[C]ode" },
+  { "<leader>c",  group = "[C]ode" },
   { "<leader>c_", hidden = true },
-  { "<leader>d", group = "[D]ocument" },
+  { "<leader>d",  group = "[D]ocument" },
   { "<leader>d_", hidden = true },
-  { "<leader>g", group = "[G]it" },
+  { "<leader>g",  group = "[G]it" },
   { "<leader>g_", hidden = true },
-  { "<leader>h", group = "Git [H]unk/[H]arpoon" },
+  { "<leader>h",  group = "Git [H]unk/[H]arpoon" },
   { "<leader>h_", hidden = true },
-  { "<leader>r", group = "[R]ename" },
+  { "<leader>r",  group = "[R]ename" },
   { "<leader>r_", hidden = true },
-  { "<leader>s", group = "[S]earch" },
+  { "<leader>s",  group = "[S]earch" },
   { "<leader>s_", hidden = true },
-  { "<leader>t", group = "[T]oggle/[T]ab" },
+  { "<leader>t",  group = "[T]oggle/[T]ab" },
   { "<leader>t_", hidden = true },
-  { "<leader>w", group = "[W]orkspace" },
+  { "<leader>w",  group = "[W]orkspace" },
   { "<leader>w_", hidden = true },
 })
 
@@ -636,8 +639,8 @@ require('which-key').add({
 -- required for visual <leader>hs (hunk stage) to work
 require('which-key').add(
   {
-    { "<leader>", group = "VISUAL <leader>", mode = "v" },
-    { "<leader>h", desc = "Git [H]unk", mode = "v" },
+    { "<leader>",  group = "VISUAL <leader>", mode = "v" },
+    { "<leader>h", desc = "Git [H]unk",       mode = "v" },
   }
 )
 
@@ -658,7 +661,7 @@ local servers = {
   pyright = {},
   rust_analyzer = {},
   eslint = {},
-  html = { filetypes = { 'html', 'twig', 'hbs'} },
+  html = { filetypes = { 'html', 'twig', 'hbs' } },
   cmake = require("jawi.lsp.config.cmake"),
 
   lua_ls = {
