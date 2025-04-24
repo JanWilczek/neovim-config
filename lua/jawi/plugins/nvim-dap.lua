@@ -229,14 +229,14 @@ return {
       command = '/Users/jawi/dev/tools/cpptools/extension/debugAdapters/bin/OpenDebugAD7',
     }
 
-    vim.keymap.set('n', '<F5>', function() require('dap').continue() end, { desc = "[D]ebugger [C]ontinue"})
-    vim.keymap.set('n', '<F10>', function() require('dap').step_over() end)
-    vim.keymap.set('n', '<F11>', function() require('dap').step_into() end)
-    vim.keymap.set('n', '<S-F11>', function() require('dap').step_out() end)
-    vim.keymap.set('n', '<F9>', function() require('dap').toggle_breakpoint() end)
+    vim.keymap.set('n', '<F5>', function() require('dap').continue() end, { desc = "(Debugger) Continue" })
+    vim.keymap.set('n', '<F10>', function() require('dap').step_over() end, { desc = "(Debugger) Step Over" })
+    vim.keymap.set('n', '<F11>', function() require('dap').step_into() end, {desc = "(Debugger) Step Into" })
+    vim.keymap.set('n', '<S-F11>', function() require('dap').step_out() end, { desc = "(Debugger) Step Out" })
+    vim.keymap.set('n', '<F9>', function() require('dap').toggle_breakpoint() end, { desc = "Toggle Breakpoint" })
     -- <F17> corresponds to Shift + F5 (<S-F5>)
     -- See here: https://github.com/mfussenegger/nvim-dap/issues/1113#issuecomment-1850472163
-    vim.keymap.set('n', '<F17>', function() require('dap').close() end)
+    vim.keymap.set('n', '<F17>', function() require('dap').close() end, { desc =  "(Debugger) Stop" })
     vim.keymap.set('n', '<Leader>lp',
       function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end)
     vim.keymap.set('n', '<Leader>dr', function() require('dap').repl.open() end)
