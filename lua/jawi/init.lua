@@ -302,6 +302,10 @@ vim.api.nvim_create_autocmd("FileChangedShellPost", {
   end,
 })
 
+local function is_windows()
+  return vim.fn.has("win32") == 1 or vim.fn.has("win64") == 1
+end
+
 -- [[ Basic Keymaps ]]
 
 -- Keymaps for better default experience
@@ -372,8 +376,16 @@ end, {})
 
 -- import floating_window
 local fw = require('jawi.floating_window')
+
+local function dropbox_path()
+  if is_windows() then
+    return 'C:\\Users\\admin\\Dropbox\\'
+  end
+  return '/Users/jawi/Library/CloudStorage/Dropbox/'
+end
+
 vim.keymap.set('n', '<leader>wm', function()
-  fw.open_floating_window('/Users/jawi/Library/CloudStorage/Dropbox/workingmemory.md')
+  fw.open_floating_window(dropbox_path() .. 'workingmemory.md')
 end, { desc = 'Open [W]orking [M]emory file' })
 vim.keymap.set('n', '<leader>td', function()
   fw.open_todo_file(vim.fn.getcwd() .. '/todo.md')
