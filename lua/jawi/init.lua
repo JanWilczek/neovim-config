@@ -366,6 +366,7 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- Tab navigation
 vim.keymap.set('n', '<leader>tn', vim.cmd.tabnext, { desc = '[T]ab [N]ext' })
 vim.keymap.set('n', '<leader>tp', vim.cmd.tabprevious, { desc = '[T]ab [P]revious' })
+vim.keymap.set('n', '<leader>tw', vim.cmd.tabnew, { desc = '[T]ab ne[W]' })
 
 -- Copy relative path to current file
 vim.api.nvim_create_user_command("CopyRelPath", function()
