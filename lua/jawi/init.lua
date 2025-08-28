@@ -373,7 +373,7 @@ end, {})
 -- import floating_window
 local fw = require('jawi.floating_window')
 vim.keymap.set('n', '<leader>wm', function()
-  fw.open_floating_window('/Users/jawi/Library/CloudStorage/Dropbox/workingmemory.md')
+  fw.open_floating_window(os.getenv("WORKING_MEMORY_FILE_PATH"))
 end, { desc = 'Open [W]orking [M]emory file' })
 vim.keymap.set('n', '<leader>td', function()
   fw.open_todo_file(vim.fn.getcwd() .. '/todo.md')
