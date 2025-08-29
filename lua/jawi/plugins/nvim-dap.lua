@@ -14,6 +14,7 @@ return {
 
     local file = require("utils.file")
     local codelldb = require("utils.codelldb")
+    local codelldb_path = vim.fn.stdpath('data') .. '/mason/bin/codelldb'
 
     dap_virtual_text_status.setup({
       enabled = true,                        -- enable this plugin (the default)
@@ -211,7 +212,8 @@ return {
       port = "${port}",
       executable = {
         -- CHANGE THIS to your path!
-        command = codelldb.codelldb_path,
+        -- command = codelldb.codelldb_path,
+        command = codelldb_path,
         args = { "--port", "${port}" },
 
         -- On windows you may have to uncomment this:
@@ -226,7 +228,7 @@ return {
     dap.adapters.cppdbg = {
       id = 'cppdbg',
       type = 'executable',
-      command = '/Users/jawi/dev/tools/cpptools/extension/debugAdapters/bin/OpenDebugAD7',
+      command = '/Users/jawi/dev/tools/cpptools/debugAdapters/bin/OpenDebugAD7',
     }
 
     vim.keymap.set('n', '<F5>', function() require('dap').continue() end, { desc = "(Debugger) Continue" })

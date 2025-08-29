@@ -43,6 +43,7 @@ require('lazy').setup({
       -- Automatically install LSPs to stdpath for neovim
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
+      'WhoIsSethDaniel/mason-tool-installer.nvim',
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
@@ -700,6 +701,12 @@ local mason_lspconfig = require 'mason-lspconfig'
 
 mason_lspconfig.setup {
   ensure_installed = vim.tbl_keys(servers),
+}
+
+require('mason-tool-installer').setup {
+  ensure_installed = {
+    'codelldb',      -- DAP adapter
+  },
 }
 
 mason_lspconfig.setup_handlers {
