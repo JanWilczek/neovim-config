@@ -1,6 +1,8 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = '-'
 
+vim.g.have_nerd_font = true
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
@@ -232,7 +234,7 @@ require('lazy').setup({
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
 
-vim.wo.relativenumber = true
+vim.o.relativenumber = true
 vim.o.expandtab = true
 vim.o.smartindent = true
 vim.o.tabstop = 2
@@ -247,7 +249,7 @@ vim.opt.list = true
 vim.o.hlsearch = true
 
 -- Make line numbers default
-vim.wo.number = true
+vim.o.number = true
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
@@ -268,7 +270,13 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 
 -- Keep signcolumn on by default
-vim.wo.signcolumn = 'yes'
+vim.o.signcolumn = 'yes'
+
+-- Enable break indent
+vim.o.breakindent = true
+
+-- Save undo history
+vim.o.undofile = true
 
 -- Decrease update time
 vim.o.updatetime = 250
