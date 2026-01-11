@@ -720,7 +720,8 @@ local function dropbox_path()
 end
 
 vim.keymap.set('n', '<leader>wm', function()
-  fw.open_floating_window(dropbox_path() .. 'workingmemory.md')
+  -- fw.open_floating_window(dropbox_path() .. 'workingmemory.md')
+  fw.open_floating_window(vim.fn.getenv('WORKING_MEMORY_FILE_PATH'))
 end, { desc = 'Open [W]orking [M]emory file' })
 vim.keymap.set('n', '<leader>td', function()
   fw.open_todo_file(vim.fn.getcwd() .. '/todo.md')
