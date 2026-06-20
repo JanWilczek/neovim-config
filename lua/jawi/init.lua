@@ -195,7 +195,7 @@ require('lazy').setup({
     main = 'nvim-treesitter', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     init = function()
-      local ensureInstalled = { 'bash', 'c', 'cpp', 'go', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'cmake', }
+      local ensureInstalled = { 'bash', 'c', 'cpp', 'go', 'diff', 'elixir', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'cmake', }
 
       local alreadyInstalled = require('nvim-treesitter.config').get_installed()
       local parsersToInstall = vim.iter(ensureInstalled)
@@ -453,6 +453,7 @@ require('lazy').setup({
           },
         },
         kotlin_language_server = { 'kt' },
+        elixirls = {},
       }
 
       -- Ensure the servers and tools above are installed
