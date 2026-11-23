@@ -195,7 +195,7 @@ require('lazy').setup({
     main = 'nvim-treesitter', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     init = function()
-      local ensureInstalled = { 'bash', 'c', 'cpp', 'go', 'diff', 'elixir', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'cmake', }
+      local ensureInstalled = { 'bash', 'c', 'cpp', 'go', 'diff', 'elixir', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'python', 'rust', 'tsx', 'javascript', 'typescript', }
 
       local alreadyInstalled = require('nvim-treesitter.config').get_installed()
       local parsersToInstall = vim.iter(ensureInstalled)
@@ -436,8 +436,6 @@ require('lazy').setup({
         rust_analyzer = {},
         eslint = {},
         html = { filetypes = { 'html', 'twig', 'hbs' } },
-        cmake = require("jawi.lsp.config.cmake"),
-
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
